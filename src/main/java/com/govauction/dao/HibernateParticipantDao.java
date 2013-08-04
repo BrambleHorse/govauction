@@ -1,6 +1,9 @@
 package com.govauction.dao;
 
 import com.govauction.model.Participant;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,18 +13,22 @@ import com.govauction.model.Participant;
  * To change this template use File | Settings | File Templates.
  */
 public class HibernateParticipantDao implements ParticipantDao {
+    @Autowired
+    SessionFactory sFactory;
     @Override
     public void createParticipant(Participant participant) {
-        //To change body of implemented methods use File | Settings | File Templates.
+       sFactory.getCurrentSession().saveOrUpdate(participant);
     }
 
     @Override
     public void deleteParticipant(Participant participant) {
-        //To change body of implemented methods use File | Settings | File Templates.
+       sFactory.getCurrentSession().delete(participant);
     }
 
     @Override
     public Participant getParticipantByName(String name) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        Query query =  sFactory.getCurrentSession().createQuery("from Participant r where r.participantName = ?");
+        query.setParameter(0, name);
+        return (Participant)query.uniqueResult();
     }
 }

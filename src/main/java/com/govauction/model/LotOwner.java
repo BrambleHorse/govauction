@@ -20,7 +20,7 @@ public class LotOwner extends BaseEntity implements Serializable {
     @Column(name = "owner_name")
     private String lotOwnerName;
 
-    @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "lotOnwer")
+    @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "lotOwner")
     private List<Lot> lots;
 
 

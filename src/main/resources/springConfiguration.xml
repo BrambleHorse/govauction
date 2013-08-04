@@ -10,21 +10,18 @@
 
     <context:annotation-config />
 
-    <tx:advice id="txAdvice" transaction-manager="txManager">
+    <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="add*" rollback-for="java.lang.Exception"/>
             <tx:method name="create*" rollback-for="java.lang.Exception"/>
-            <tx:method name="update*"/>
             <tx:method name="delete*"/>
-            <tx:method name="read*" read-only="true"/>
             <tx:method name="get*" read-only="true"/>
-            <tx:method name="find*" read-only="true" timeout="-1" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
 
     <aop:config>
-        <aop:pointcut id="transactional" expression="execution(* com.govauction.service.LotService*.*(..))" />
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="transactional"/>
+        <aop:pointcut id="transactional" expression="execution(* com.govauction.service.*.*(..))" />
+        <aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactional"/>
     </aop:config>
 
     <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -34,7 +31,7 @@
         <property name="password" value="string"/>
     </bean>
 
-    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
@@ -48,6 +45,18 @@
         <property name="lotDao" ref="lotDao"/>
     </bean>
 
+    <bean id="lotOrderService" class="com.govauction.service.LotOrderServiceImpl">
+        <property name="lotOrderDao" ref="lotOrderDao"/>
+    </bean>
+
+    <bean id="lotOwnerService" class="com.govauction.service.LotOwnerServiceImpl">
+        <property name="lotOwnerDao" ref="lotOwnerDao"/>
+    </bean>
+
+    <bean id="participantService" class="com.govauction.service.ParticipantServiceImpl">
+        <property name="participantDao" ref="participantDao"/>
+    </bean>
+
     <bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource" />
     </bean>
@@ -59,7 +68,8 @@
             <value>
                 hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
                 hibernate.show_sql=true
-                <!--hibernate.hbm2ddl.auto=create -->
+                <!-- uncomment this to create database with hibernate-->
+               <!-- hibernate.hbm2ddl.auto=create -->
             </value>
         </property>
     </bean>

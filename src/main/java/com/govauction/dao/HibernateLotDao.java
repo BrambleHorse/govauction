@@ -20,7 +20,7 @@ public class HibernateLotDao implements LotDao {
     SessionFactory sFactory;
     @Override
     public void createLot(Lot lot) {
-       sFactory.getCurrentSession().save(lot);
+       sFactory.getCurrentSession().saveOrUpdate(lot);
     }
 
     @Override

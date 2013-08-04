@@ -1,7 +1,11 @@
 package com.govauction.dao;
 
 import com.govauction.model.LotOrder;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,23 +16,31 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class HibernateLotOrderDao implements LotOrderDao {
+    @Autowired
+    SessionFactory sFactory;
     @Override
     public void createLotOrder(LotOrder lotOrder) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        sFactory.getCurrentSession().saveOrUpdate(lotOrder);
     }
 
     @Override
     public void deleteLotOrder(LotOrder lotOrder) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        sFactory.getCurrentSession().delete(lotOrder);
     }
 
     @Override
-    public LotOrder getLotOrderByName(String name) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public LotOrder getLotOrder(String lotDescription, String participantName) {
+        Query query =  sFactory.getCurrentSession().createQuery("from LotOrder r where r.lot.description = ? and r.participant.participantName = ?");
+        query.setParameter(0, lotDescription);
+        query.setParameter(1, participantName);
+        return (LotOrder)query.uniqueResult();
     }
 
     @Override
     public List<LotOrder> getAllLotOrders() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        List result = new ArrayList();
+        Query query =  sFactory.getCurrentSession().createQuery("from LotOrder");
+        result = (List<LotOrder>)query.list();
+        return result;
     }
 }

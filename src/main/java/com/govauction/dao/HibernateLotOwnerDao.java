@@ -1,6 +1,9 @@
 package com.govauction.dao;
 
 import com.govauction.model.LotOwner;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,18 +13,22 @@ import com.govauction.model.LotOwner;
  * To change this template use File | Settings | File Templates.
  */
 public class HibernateLotOwnerDao implements LotOwnerDao {
+    @Autowired
+    SessionFactory sFactory;
     @Override
     public void createLotOwner(LotOwner lotOwner) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        sFactory.getCurrentSession().saveOrUpdate(lotOwner);
     }
 
     @Override
     public void deleteLotOwner(LotOwner lotOwner) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        sFactory.getCurrentSession().delete(lotOwner);
     }
 
     @Override
-    public void getLotOwnerByName(String name) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public LotOwner getLotOwnerByName(String name) {
+        Query query =  sFactory.getCurrentSession().createQuery("from LotOwner r where r.lotOwnerName = ?");
+        query.setParameter(0, name);
+        return (LotOwner)query.uniqueResult();
     }
 }

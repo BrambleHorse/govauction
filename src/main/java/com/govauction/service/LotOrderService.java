@@ -1,5 +1,9 @@
 package com.govauction.service;
 
+import com.govauction.model.LotOrder;
+
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: bramblehorse
@@ -8,4 +12,8 @@ package com.govauction.service;
  * To change this template use File | Settings | File Templates.
  */
 public interface LotOrderService {
+    public void createLotOrder(LotOrder lotOrder);
+    public void deleteLotOrder(LotOrder lotOrder);
+    public LotOrder getLotOrder(String lotDescription, String participantName);
+    public List<LotOrder> getAllLotOrders();
 }

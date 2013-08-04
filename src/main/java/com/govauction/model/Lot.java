@@ -23,7 +23,7 @@ public class Lot extends BaseEntity implements Serializable {
 
     @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "owner_id")
-    private LotOwner lotOnwer;
+    private LotOwner lotOwner;
 
     @Column(name = "lot_date")
     private Date lotDate;
@@ -48,11 +48,11 @@ public class Lot extends BaseEntity implements Serializable {
     }
 
     public LotOwner getLotOnwer() {
-        return lotOnwer;
+        return lotOwner;
     }
 
-    public void setLotOnwer(LotOwner lotOnwer) {
-        this.lotOnwer = lotOnwer;
+    public void setLotOwner(LotOwner lotOwner) {
+        this.lotOwner = lotOwner;
     }
 
     public Date getLotDate() {

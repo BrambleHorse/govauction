@@ -12,6 +12,6 @@ import com.govauction.model.LotOwner;
 public interface LotOwnerDao {
     public void createLotOwner(LotOwner lotOwner);
     public void deleteLotOwner(LotOwner lotOwner);
-    public void getLotOwnerByName(String name);
+    public LotOwner getLotOwnerByName(String name);
 
 }

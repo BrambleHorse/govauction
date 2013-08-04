@@ -1,5 +1,7 @@
 package com.govauction.service;
 
+import com.govauction.model.LotOwner;
+
 /**
  * Created with IntelliJ IDEA.
  * User: bramblehorse
@@ -8,4 +10,7 @@ package com.govauction.service;
  * To change this template use File | Settings | File Templates.
  */
 public interface LotOwnerService {
+    public void createLotOwner(LotOwner lotOwner);
+    public void deleteLotOwner(LotOwner lotOwner);
+    public LotOwner getLotOwnerByName(String name);
 }

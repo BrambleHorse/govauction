@@ -14,6 +14,6 @@ import java.util.List;
 public interface LotOrderDao {
     public void createLotOrder(LotOrder lotOrder);
     public void deleteLotOrder(LotOrder lotOrder);
-    public LotOrder getLotOrderByName(String name);
+    public LotOrder getLotOrder(String lotDescription, String participantName);
     public List<LotOrder> getAllLotOrders();
 }
