@@ -2,6 +2,8 @@ package com.govauction.service;
 
 import com.govauction.dao.LotDao;
 import com.govauction.model.Lot;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,8 +14,15 @@ import java.util.List;
  * Time: 22:37
  * To change this template use File | Settings | File Templates.
  */
+
 public class LotServiceImpl implements LotService {
-   LotDao lotDao;
+
+    LotDao lotDao;
+
+    @Override
+    public String indicateLotDao() {
+       return lotDao.indicateDao();
+    }
 
     public void setLotDao(LotDao lotDao) {
         this.lotDao = lotDao;

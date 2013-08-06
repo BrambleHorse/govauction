@@ -16,4 +16,5 @@ public interface LotDao {
     public void deleteLot(Lot lot);
     public Lot getLotByDescription(String name);
     public List<Lot> getAllLots();
+    public String indicateDao();
 }
