@@ -9,13 +9,13 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="lot_orders")
-public class LotOrder extends BaseEntity implements Serializable {
+public class LotOrder implements Serializable {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private Long lotOrderId;
+    private Integer lotOrderId;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch =  FetchType.LAZY)
     @JoinColumn(name = "participant_id")
@@ -34,11 +34,11 @@ public class LotOrder extends BaseEntity implements Serializable {
         this.lot = lot;
     }
 
-    public Long getLotOrderId() {
+    public Integer getLotOrderId() {
         return lotOrderId;
     }
 
-    public void setLotOrderId(Long lotOrderId) {
+    public void setLotOrderId(Integer lotOrderId) {
         this.lotOrderId = lotOrderId;
     }
 

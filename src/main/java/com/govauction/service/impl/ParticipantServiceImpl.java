@@ -1,11 +1,12 @@
-package com.govauction.service;
+package com.govauction.service.impl;
 
 import com.govauction.dao.ParticipantDao;
 import com.govauction.model.Participant;
+import com.govauction.service.ParticipantService;
 
 /**
  * Created with IntelliJ IDEA.
- * User: bramblehorse
+ *
  * Date: 03.08.13
  * Time: 22:39
  * To change this template use File | Settings | File Templates.
@@ -28,7 +29,7 @@ public class ParticipantServiceImpl implements ParticipantService {
     }
 
     @Override
-    public Participant getParticipantByName(String name) {
-        return participantDao.getParticipantByName(name);
+    public Participant getParticipantById(Integer id) {
+        return participantDao.getParticipantById(id);
     }
 }

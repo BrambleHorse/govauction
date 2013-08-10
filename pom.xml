@@ -125,7 +125,6 @@
                 <version>2.1.1</version>
                 <configuration>
                     <warSourceExcludes>
-
                     </warSourceExcludes>
                     <archive>
                         <manifest>

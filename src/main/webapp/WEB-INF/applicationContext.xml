@@ -9,27 +9,27 @@
 
     <context:annotation-config />
 
-    <bean id="lotDao" class="com.govauction.dao.HibernateLotDao"/>
+    <bean id="lotDao" class="com.govauction.dao.impl.HibernateLotDao"/>
 
-    <bean id="lotOrderDao" class="com.govauction.dao.HibernateLotOrderDao"/>
+    <bean id="lotOrderDao" class="com.govauction.dao.impl.HibernateLotOrderDao"/>
 
-    <bean id="lotOwnerDao" class="com.govauction.dao.HibernateLotOwnerDao"/>
+    <bean id="lotOwnerDao" class="com.govauction.dao.impl.HibernateLotOwnerDao"/>
 
-    <bean id="participantDao" class="com.govauction.dao.HibernateParticipantDao"/>
+    <bean id="participantDao" class="com.govauction.dao.impl.HibernateParticipantDao"/>
 
-    <bean id="lotService" class="com.govauction.service.LotServiceImpl">
+    <bean id="lotService" class="com.govauction.service.impl.LotServiceImpl">
       <property name="lotDao" ref="lotDao"/>
     </bean>
 
-    <bean id="lotOrderService" class="com.govauction.service.LotOrderServiceImpl">
+    <bean id="lotOrderService" class="com.govauction.service.impl.LotOrderServiceImpl">
         <property name="lotOrderDao" ref="lotOrderDao"/>
     </bean>
 
-    <bean id="lotOwnerService" class="com.govauction.service.LotOwnerServiceImpl">
+    <bean id="lotOwnerService" class="com.govauction.service.impl.LotOwnerServiceImpl">
         <property name="lotOwnerDao" ref="lotOwnerDao"/>
     </bean>
 
-    <bean id="participantService" class="com.govauction.service.ParticipantServiceImpl">
+    <bean id="participantService" class="com.govauction.service.impl.ParticipantServiceImpl">
         <property name="participantDao" ref="participantDao"/>
     </bean>
 

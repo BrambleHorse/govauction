@@ -4,7 +4,7 @@ import com.govauction.model.LotOwner;
 
 /**
  * Created with IntelliJ IDEA.
- * User: bramblehorse
+ *
  * Date: 03.08.13
  * Time: 22:27
  * To change this template use File | Settings | File Templates.
@@ -12,5 +12,5 @@ import com.govauction.model.LotOwner;
 public interface LotOwnerService {
     public void createLotOwner(LotOwner lotOwner);
     public void deleteLotOwner(LotOwner lotOwner);
-    public LotOwner getLotOwnerByName(String name);
+    public LotOwner getLotOwnerById(Integer id);
 }

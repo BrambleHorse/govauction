@@ -10,12 +10,12 @@ import java.util.List;
 
 @Entity
 @Table(name="owners")
-public class LotOwner extends BaseEntity implements Serializable {
+public class LotOwner implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "owner_id")
-    private Long lotOwnerId;
+    private Integer lotOwnerId;
 
     @Column(name = "owner_name")
     private String lotOwnerName;
@@ -32,11 +32,11 @@ public class LotOwner extends BaseEntity implements Serializable {
         this.lots = lots;
     }
 
-    public Long getLotOwnerId() {
+    public Integer getLotOwnerId() {
         return lotOwnerId;
     }
 
-    public void setLotOwnerId(Long lotOwnerId) {
+    public void setLotOwnerId(Integer lotOwnerId) {
         this.lotOwnerId = lotOwnerId;
     }
 

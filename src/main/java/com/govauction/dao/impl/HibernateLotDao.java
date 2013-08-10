@@ -1,5 +1,6 @@
-package com.govauction.dao;
+package com.govauction.dao.impl;
 
+import com.govauction.dao.LotDao;
 import com.govauction.model.Lot;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -12,7 +13,7 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: bramblehorse
+ *
  * Date: 03.08.13
  * Time: 22:54
  * To change this template use File | Settings | File Templates.
@@ -22,10 +23,6 @@ public class HibernateLotDao implements LotDao {
 
     @Autowired
     HibernateTemplate ht;
-
-    public String indicateDao() {
-        return "I am Hibernate lot dao";
-    }
 
     @Transactional
     @Override
@@ -39,12 +36,12 @@ public class HibernateLotDao implements LotDao {
     }
     @Transactional
     @Override
-    public Lot getLotByDescription(String description) {
-       return null;
+    public Lot getLotById(Integer id) {
+      return ht.get(Lot.class, id);
     }
     @Transactional
     @Override
     public List<Lot> getAllLots() {
-      return (List<Lot>)ht.loadAll(Lot.class);
+      return ht.loadAll(Lot.class);
     }
 }

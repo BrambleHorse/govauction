@@ -10,13 +10,13 @@ import java.util.List;
 
 @Entity
 @Table(name="participants")
-public class Participant extends BaseEntity implements Serializable {
+public class Participant implements Serializable {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "participant_id")
-    private Long participantId;
+    private Integer participantId;
 
 
     @Column(name = "participant_name")
@@ -35,11 +35,11 @@ public class Participant extends BaseEntity implements Serializable {
         this.orders = orders;
     }
 
-    public Long getParticipantId() {
+    public Integer getParticipantId() {
         return participantId;
     }
 
-    public void setParticipantId(Long participantId) {
+    public void setParticipantId(Integer participantId) {
         this.participantId = participantId;
     }
 

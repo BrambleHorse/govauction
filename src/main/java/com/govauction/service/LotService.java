@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: bramblehorse
+ *
  * Date: 03.08.13
  * Time: 22:27
  * To change this template use File | Settings | File Templates.
@@ -14,7 +14,6 @@ import java.util.List;
 public interface LotService {
     public void createLot(Lot lot);
     public void deleteLot(Lot lot);
-    public Lot getLotByDescription(String name);
+    public Lot getLotById(Integer id);
     public List<Lot> getAllLots();
-    public String indicateLotDao();
 }

@@ -1,34 +1,37 @@
-package com.govauction.dao;
+package com.govauction.dao.impl;
 
+import com.govauction.dao.LotOwnerDao;
 import com.govauction.model.LotOwner;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created with IntelliJ IDEA.
- * User: bramblehorse
+ *
  * Date: 03.08.13
  * Time: 22:54
  * To change this template use File | Settings | File Templates.
  */
+@Transactional
 public class HibernateLotOwnerDao implements LotOwnerDao {
     @Autowired
-    SessionFactory sFactory;
+    HibernateTemplate ht;
+    @Transactional
     @Override
     public void createLotOwner(LotOwner lotOwner) {
-        sFactory.getCurrentSession().saveOrUpdate(lotOwner);
+        ht.saveOrUpdate(lotOwner);
     }
-
+    @Transactional
     @Override
     public void deleteLotOwner(LotOwner lotOwner) {
-        sFactory.getCurrentSession().delete(lotOwner);
+        ht.delete(lotOwner);
     }
-
+    @Transactional
     @Override
-    public LotOwner getLotOwnerByName(String name) {
-        Query query =  sFactory.getCurrentSession().createQuery("from LotOwner r where r.lotOwnerName = ?");
-        query.setParameter(0, name);
-        return (LotOwner)query.uniqueResult();
+    public LotOwner getLotOwnerById(Integer id) {
+      return ht.get(LotOwner.class,id);
     }
 }

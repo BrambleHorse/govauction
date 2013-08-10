@@ -1,13 +1,14 @@
-package com.govauction.service;
+package com.govauction.service.impl;
 
 import com.govauction.dao.LotOrderDao;
 import com.govauction.model.LotOrder;
+import com.govauction.service.LotOrderService;
 
 import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: bramblehorse
+ *
  * Date: 03.08.13
  * Time: 22:38
  * To change this template use File | Settings | File Templates.
@@ -30,8 +31,8 @@ public class LotOrderServiceImpl implements LotOrderService {
     }
 
     @Override
-    public LotOrder getLotOrder(String lotDescription, String participantName) {
-       return lotOrderDao.getLotOrder(lotDescription,participantName);
+    public LotOrder getLotOrderById(Integer id) {
+        return lotOrderDao.getLotOrderById(id);
     }
 
     @Override

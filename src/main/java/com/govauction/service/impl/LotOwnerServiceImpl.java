@@ -1,11 +1,12 @@
-package com.govauction.service;
+package com.govauction.service.impl;
 
 import com.govauction.dao.LotOwnerDao;
 import com.govauction.model.LotOwner;
+import com.govauction.service.LotOwnerService;
 
 /**
  * Created with IntelliJ IDEA.
- * User: bramblehorse
+ *
  * Date: 03.08.13
  * Time: 22:38
  * To change this template use File | Settings | File Templates.
@@ -28,7 +29,7 @@ public class LotOwnerServiceImpl implements LotOwnerService {
     }
 
     @Override
-    public LotOwner getLotOwnerByName(String name) {
-        return lotOwnerDao.getLotOwnerByName(name);
+    public LotOwner getLotOwnerById(Integer id) {
+        return lotOwnerDao.getLotOwnerById(id);
     }
 }

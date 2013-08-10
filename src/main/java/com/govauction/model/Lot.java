@@ -11,12 +11,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="lots")
-public class Lot extends BaseEntity implements Serializable {
+public class Lot implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "lot_id")
-    private Long lotId;
+    private Integer lotId;
 
     @Column(name = "description")
     private String description;
@@ -31,11 +31,11 @@ public class Lot extends BaseEntity implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "lot")
     private List<LotOrder> lotOrders;
 
-    public Long getLotId() {
+    public Integer getLotId() {
         return lotId;
     }
 
-    public void setLotId(Long lotId) {
+    public void setLotId(Integer lotId) {
         this.lotId = lotId;
     }
 
@@ -47,7 +47,7 @@ public class Lot extends BaseEntity implements Serializable {
         this.description = description;
     }
 
-    public LotOwner getLotOnwer() {
+    public LotOwner getLotOwner() {
         return lotOwner;
     }
 

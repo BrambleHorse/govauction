@@ -1,15 +1,14 @@
-package com.govauction.service;
+package com.govauction.service.impl;
 
 import com.govauction.dao.LotDao;
 import com.govauction.model.Lot;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+import com.govauction.service.LotService;
 
 import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: bramblehorse
+ *
  * Date: 03.08.13
  * Time: 22:37
  * To change this template use File | Settings | File Templates.
@@ -18,11 +17,6 @@ import java.util.List;
 public class LotServiceImpl implements LotService {
 
     LotDao lotDao;
-
-    @Override
-    public String indicateLotDao() {
-       return lotDao.indicateDao();
-    }
 
     public void setLotDao(LotDao lotDao) {
         this.lotDao = lotDao;
@@ -39,8 +33,8 @@ public class LotServiceImpl implements LotService {
     }
 
     @Override
-    public Lot getLotByDescription(String name) {
-        return lotDao.getLotByDescription(name);
+    public Lot getLotById(Integer id) {
+        return lotDao.getLotById(id);
     }
 
     @Override
