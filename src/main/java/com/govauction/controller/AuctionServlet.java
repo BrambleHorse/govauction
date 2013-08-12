@@ -4,6 +4,7 @@ import com.govauction.model.LotOrder;
 import com.govauction.model.LotOwner;
 import com.govauction.model.Participant;
 import com.govauction.service.*;
+import com.govauction.view.LotOrderView;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -65,9 +66,9 @@ public class AuctionServlet extends HttpServlet {
         Lot lot = lotService.getLotById(Integer.parseInt(lotId));
         LotOwner owner = lot.getLotOwner();
         List<LotOrder>tempOrders = lot.getLotOrders();
-        List<LotOrderInfo>orders = new ArrayList<LotOrderInfo>();
+        List<LotOrderView>orders = new ArrayList<LotOrderView>();
         for(LotOrder o : tempOrders) {
-            orders.add(new LotOrderInfo(o.getLotOrderId(),o.getParticipant().getParticipantName()));
+            orders.add(new LotOrderView(o.getLotOrderId(),o.getParticipant().getParticipantName()));
 
         }
         req.setAttribute("lot", lot);
@@ -165,33 +166,4 @@ public class AuctionServlet extends HttpServlet {
 //        participantService.createParticipant(testParticipant2);
 //        participantService.createParticipant(testParticipant3);
 //    }
-    /*
-     * This class is a container for LotOrder and Participant classes data
-     * that we will use with JSTL
-     */
-    public class LotOrderInfo {
-        private Integer lotOrderId;
-        private String participantName;
-
-        private LotOrderInfo(Integer lotOrderId, String participantName) {
-            this.lotOrderId = lotOrderId;
-            this.participantName = participantName;
-        }
-
-        public String getParticipantName() {
-            return participantName;
-        }
-
-        private void setParticipantName(String participantName) {
-            this.participantName = participantName;
-        }
-
-        public Integer getLotOrderId() {
-            return lotOrderId;
-        }
-
-        private void setLotOrderId(Integer lotOrderId) {
-            this.lotOrderId = lotOrderId;
-        }
-    }
 }

@@ -14,7 +14,7 @@
                 <c:when test="${lotsLength > 0}">
                     <c:forEach items="${allLots}" var="lot">
                         <h2>${lot.description}</h2>
-                        <a href="/auction?lot=${lot.lotId}">Get all information about this lot</a>
+                        <a href="${pageContext.request.contextPath}/auction?lot=${lot.lotId}">Get all information about this lot</a>
                         <hr/>
                     </c:forEach>
                 </c:when>
