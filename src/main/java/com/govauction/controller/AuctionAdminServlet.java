@@ -6,6 +6,8 @@ import com.govauction.service.LotOrderService;
 import com.govauction.service.LotOwnerService;
 import com.govauction.service.LotService;
 import com.govauction.service.ParticipantService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -25,6 +27,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class AuctionAdminServlet extends HttpServlet {
+    //uncomment to use services without autowired annotation
     private WebApplicationContext context;
     private LotService lotService;
     private LotOrderService lotOrderService;
@@ -33,6 +36,7 @@ public class AuctionAdminServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
+        //uncomment to use services without autowired annotation
         context = ContextLoaderListener.getCurrentWebApplicationContext();
         lotService = (LotService) context.getBean("lotService");
         lotOrderService = (LotOrderService) context.getBean("lotOrderService");

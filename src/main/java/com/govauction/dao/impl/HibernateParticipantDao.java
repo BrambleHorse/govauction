@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,6 +15,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
  * Time: 22:55
  * To change this template use File | Settings | File Templates.
  */
+@Transactional
 public class HibernateParticipantDao implements ParticipantDao {
     @Autowired
     HibernateTemplate ht;

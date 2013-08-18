@@ -25,7 +25,7 @@
         <property name="lotOrderDao" ref="lotOrderDao"/>
     </bean>
 
-    <bean id="lotOwnerService" class="com.govauction.service.impl.LotOwnerServiceImpl">
+    <bean id="lotOwnerService"  class="com.govauction.service.impl.LotOwnerServiceImpl">
         <property name="lotOwnerDao" ref="lotOwnerDao"/>
     </bean>
 

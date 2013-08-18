@@ -5,6 +5,8 @@ import com.govauction.model.LotOwner;
 import com.govauction.model.Participant;
 import com.govauction.service.*;
 import com.govauction.view.LotOrderView;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -26,7 +28,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class AuctionServlet extends HttpServlet {
-
+    //uncomment to use services without autowired annotation
    private WebApplicationContext context;
    private LotService lotService;
    private LotOrderService lotOrderService;
@@ -35,11 +37,13 @@ public class AuctionServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
+        //uncomment to use services without autowired annotation
         context = ContextLoaderListener.getCurrentWebApplicationContext();
         lotService = (LotService) context.getBean("lotService");
         lotOrderService = (LotOrderService) context.getBean("lotOrderService");
         lotOwnerService = (LotOwnerService) context.getBean("lotOwnerService");
         participantService = (ParticipantService) context.getBean("participantService");
+//
         // uncomment insertMockValues method and hibernate.hbm2ddl.auto=create in db-config.xml
         // to fill the database with mock values. You can also use script.sql in /resources instead.
         //insertMockValues();
